@@ -11,7 +11,7 @@ class Cardnews extends HTMLElement{
     }
 
     build(){
-        //Obs.: ao invés de usarmos 'card', o termo 'componentRoot' está sendo declarado, pois é costume ser usado como conceito de primeiro, ou pai, ou principal, aquele que começa algo.
+        //Obs.: ao invés de usarmos 'card', o termo 'componentRoot' está sendo declarado, pois é costume ser usado como conceito de primeiro, ou pai, ou principal, aquele que começa algo como árvore principal.
         const componentRoot = document.createElement("div");
         componentRoot.setAttribute("class", "card");
 
@@ -25,6 +25,7 @@ class Cardnews extends HTMLElement{
 
         const linkTitle = document.createElement("a");
         linkTitle.textContent = this.getAttribute("title");
+        linkTitle.href = this.getAttribute("link-url")
 
         const newsContent = document.createElement("p");
         newsContent.textContent = this.getAttribute("content");
@@ -39,6 +40,8 @@ class Cardnews extends HTMLElement{
 
         //Criando o 'img' para o 'card_right':
         const newsImage = document.createElement("img");
+        newsImage.src = this.getAttribute("photo") || "/assets/image-defaut.png";
+        newsImage.alt = "Foto da notícia."
         cardRight.appendChild(newsImage);
 
         //Atribuindo os 'cardLeft' e 'cardRight' como 'child' do 'componentRoot': 
